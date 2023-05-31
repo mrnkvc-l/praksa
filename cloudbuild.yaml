@@ -1,9 +1,15 @@
 steps:
   - name: 'hashicorp/terraform:latest'
-    entrypoint: 'bash'
+    entrypoint: 'terraform'
     args:
-      - '-c'
-      - |
-        terraform init
-        terraform plan
-        terraform apply
+      - 'init'
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'terraform'
+    args:
+      - 'plan'
+      - '-out=tfplan'
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'terraform'
+    args:
+      - 'apply'
+      - 'tfplan'
