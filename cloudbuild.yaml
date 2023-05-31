@@ -11,3 +11,4 @@ steps:
     entrypoint: 'terraform'
     args:
       - 'apply'
+      - '-auto-approve'
