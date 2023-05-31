@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['auth', 'activate-service-account']
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        terraform init
+        terraform plan
+        terraform apply
